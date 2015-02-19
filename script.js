@@ -71,124 +71,13 @@ function itemlist() {
 	    list.appendChild(input_value);            
 	}           		
 }
-       
+
+//function to find maximum percentage value       
 function findMax(A){
 	A.sort(function(a, b){return a-b});
 	return A.pop();
 }
-
-//function to plot bar chat			  
-function barchart(dataset, max) {
-	var canvas = document.getElementById('chart');
-	var context = canvas.getContext('2d');
-	var startx = 80;  
-	var scale_f = (canvas.height-200)/max;				        
-	context.clearRect(0, 0, canvas.width, canvas.height);
-    plotaxis();
-                
-	for(var s in dataset){			    
-		context.beginPath();
-        context.rect(startx,600, 30,-dataset[s].percent*scale_f); //multiply by 10 to improve scaling
-		context.fillStyle = '#B71C1C';
-		context.fill();
-		context.font = '10pt Helvetica';
-		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, startx, 620);
-		startx += 50;
-	}			        
-}
-		    			
-//function to plot pie chat from dataset
-function piechart(dataset,max) {
-	var canvas = document.getElementById('chart');
-	var context = canvas.getContext('2d');
-	var chartcolors = ['#B71C1C','#4A148C', '#1A237E', '#01579B', '#004D40', 
-						'#33691E', '#F57F17', '#E65100', '#3E2723', '#263238'];
-	var x = (canvas.width/2)-50;
-	var y = (canvas.height/2)-50;
-	var radius = y-100;	
-	var startAngle = 0;
-    var title = document.getElementById('title').value;
-    var starty = 50;
-
-              
-    context.clearRect(0, 0, canvas.width, canvas.height);
-              
-    context.font = '20pt Helvetica';
-    context.fillText(title, x-100, 50);
-
-	//convert percentage in radians and plot graph				
-	for(var s in dataset){
-		dataset[s].radian = (dataset[s].percent/100)*Math.PI*2;
-		context.fillStyle = chartcolors[s];
-		context.beginPath();
-		context.arc(x, y, radius, startAngle,startAngle+dataset[s].radian, false);
-		context.lineTo(x,y);
-		context.fill();
-
-		//create Legend
-		context.rect(550,starty, 15,15);
-		context.fillStyle = chartcolors[s];
-		context.fill();
-
-		context.font = '10pt Helvetica';
-		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, 570, starty+12);
-		startAngle += dataset[s].radian;
-		starty+=20;
-	}    
-}
-          
-			
-//function to plot line chat from dataset
-function linechart(dataset, max) {
-	var canvas = document.getElementById('chart');
-	var context = canvas.getContext('2d');
-	var startx = 50;
-
-	var scale_f = (canvas.height-200)/max;							
-	context.clearRect(0, 0, canvas.width, canvas.height);
-	plotaxis();
-	context.beginPath();
-		
-	//convert percentage in radians and plot graph			       
-	for(var s in dataset){	
-		//create line   
-		context.lineTo(startx, (600-dataset[s].percent*scale_f));//y=axis numbers multiplied by 5 to improve scaling
-		context.lineWidth = 3;
-		context.strokeStyle = '#F44336';
-		context.stroke();
-		//create Labels
-		context.font = '10pt Helvetica';
-		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, startx, 620);
-		startx += 50;
-	}	
-}
-
-//function to plot histogram
-function histogram(dataset, max) {
-	var canvas = document.getElementById('chart');
-	var context = canvas.getContext('2d');
-	var startx = 51; 
-	var chartcolors = ['#B71C1C','#4A148C', '#1A237E', '#01579B', '#004D40', 
-						'#33691E', '#F57F17', '#E65100', '#3E2723', '#263238']; 
-	var scale_f = (canvas.height-200)/max; //calculate scale factor based on maximum user input				        
-	context.clearRect(0, 0, canvas.width, canvas.height);
-    plotaxis();
-                
-	for(var s in dataset){			    
-		context.beginPath();
-        context.rect(startx,600, 50,-dataset[s].percent*scale_f); //multiply by scale factor
-		context.fillStyle = chartcolors[s];
-		context.fill();
-		context.font = '10pt Helvetica';
-		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, startx, 620);
-		startx += 50;
-	}			        
-}
-			
+	    			    		
 //Function to plot axis with labels from data set
 function plotaxis(){
 	var canvas = document.getElementById('chart');

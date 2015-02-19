@@ -1,114 +1,126 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Chart Application</title>
-		<script type="text/javascript" src="script.js"></script>
-		<style>
-			body{
-            	width: 800px;
-				height: 1200px;
-				margin: 0 auto;	
-            	font-family: "Helvetica";
-            	background-color: #EEEEEE;
-			}
-            p{
-              padding: 0;
-              margin: 40px 0 20px 0;
-            font-size: 20px
-            }
-			canvas{					
-				box-shadow: 0px 0px 5px black;
-				position: relative;
-				margin: 40px 0 0 50px;
-            	background-color: white;
-			}
-			.data{	
-            text-align: center;
-            	background-color: white;
-				position: relative;
-				box-shadow: 0px 0px 5px black;
-				margin: 0 auto;
-            	padding: 20px;
-			}
-          input{
-            margin: 5px 25px 0 0;
-            width: 70px;
-            
-          }
-          input[type="radio"]{
-            margin: 0 0 0 10px;
-          }
-          input[type="reset"]{
-           
-            padding: 10px;
-            background-color: #F44336;
-            color: white;
-          }
-          input[value="PLOT"]{
-           
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-          }
-          input[id = "title"]{           
-            padding: 2px;
-            width: 300px
-          }
-          input[name = "chart"]{    
-       		width: 20px;
-          }
-                   
-		</style>
-	</head>
+  <head>
+    <title>Chart Application</title>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/barchart.js"></script>
+    <script type="text/javascript" src="js/piechart.js"></script>
+    <script type="text/javascript" src="js/linechart.js"></script>
+    <script type="text/javascript" src="js/histogram.js"></script>
+    <style>
+        body{         
+          font-family: "Helvetica";
+          background-color: #EEEEEE;
+          text-align: center;
+        }
+        p{
+          padding: 0;
+          margin: 40px 0 20px 0;
+          font-size: 20px
+        }
+        h1{
+          padding: 10px;
+          color: white;
+        }
+        header{          
+          margin-top: 0;
+          height: 60px;
+          background-color: #0D47A1;          
+          box-shadow: 0px 5px 5px #777777;;
+        }
+        .container{
+          width: 65%;
+          margin: 0 auto;
+        }
+        .canvas{
+          width: 65%;
+          box-shadow: 0px 0px 5px black;
+          position: relative;
+          margin: 40px 20px;
+          background-color: white;
+          float: right;
+         }
+        .data{
+          width: 25%;
+          text-align: center;
+          background-color: white;
+          position: relative;
+          box-shadow: 0px 0px 5px black;
+          margin: 40px 20px;
+          padding: 20px;
+          float: left;
+        }
+        input{
+          margin: 5px 25px 0 0;
+          width: 70px;            
+        }
+        input[type="radio"]{
+          margin: 0 0 0 10px;
+        }
+        input[type="reset"]{
+          padding: 10px;
+          background-color: #F44336;
+          color: white;
+        }
+        input[value="PLOT"]{
+          padding: 10px;
+          background-color: #4CAF50;
+          color: white;
+        }
+        input[id = "title"]{           
+          padding: 2px;
+          width: 200px
+        }
+        input[name = "chart"]{    
+          width: 20px;
+        }
+    </style>
+  </head>
 
-	<body>
-		<h1> Chart Application</h1>
-      
-		<div class="data">
+  <body>
+    <header>
+      <h1> Chart Plotter</h1>
+    </header>
+    
+    <div class="container">
+      <div class="data">
         <p> Select Chart </p>
         <select  id="charts">
-            <option value="barchart">Bar Chart</option>
-            <option value="piechart">Pie Chart</option>
-            <option value="linechart">Line Chart</option>
-            <option value="histogram">Histogram</option>           
-          </select>
-          <p>Graph Title<br><input type="text" id="title"></p>                  
-          
-          <p>Data Set:</p>
-         
-          No of Items: 
-          <select onChange="itemlist()" id="items">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          
-          
-          <div id="list"> </div>
-
-          
-          <br>
-          <input type="reset" onclick="reset()" value="RESET">
-          <input type="button" onclick="plotGraph()" value="PLOT">
-      		
-      	</div>
-		
-		<div>
-			<canvas id="chart" width="700" height="700">
-			This version of your browser is not supported.
-			</canvas>
-		</div>
-
-		<script>
-
-		</script>	
-	</body>
+          <option value="barchart">Bar Chart</option>
+          <option value="piechart">Pie Chart</option>
+          <option value="linechart">Line Chart</option>
+          <option value="histogram">Histogram</option>           
+        </select>
+        <p>Graph Title<br><input type="text" id="title"></p>                
+        
+        <p>Data Set:</p>
+        
+        No of Items: 
+        <select onChange="itemlist()" id="items">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>         
+        
+        <div id="list"> </div><br>
+        <input type="reset" onclick="reset()" value="RESET">
+        <input type="button" onclick="plotGraph()" value="PLOT">
+        
+      </div>
+      <div class ="canvas">
+        <canvas id="chart" width="700" height="700">
+          This version of your browser is not supported.
+        </canvas>
+      </div>
+    </div>
+    
+  </body>
 </html>
