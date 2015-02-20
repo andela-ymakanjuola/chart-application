@@ -4,8 +4,8 @@ function piechart(dataset,max) {
 	var context = canvas.getContext('2d');
 	var chartcolors = ['#B71C1C','#4A148C', '#1A237E', '#01579B', '#004D40', 
 						'#33691E', '#F57F17', '#E65100', '#3E2723', '#263238'];
-	var x = (canvas.width/2)-50;
-	var y = (canvas.height/2)-50;
+	var x = (canvas.width/2);
+	var y = (canvas.height/2);
 	var radius = y-100;	
 	var startAngle = 0;
     var title = document.getElementById('title').value;
@@ -27,13 +27,13 @@ function piechart(dataset,max) {
 		context.fill();
 
 		//create Legend
-		context.rect(550,starty, 15,15);
+		context.rect(canvas.width-100,starty, 15,15);
 		context.fillStyle = chartcolors[s];
 		context.fill();
 
 		context.font = '10pt Helvetica';
 		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, 570, starty+12);
+    	context.fillText(dataset[s].name, canvas.width-70, starty+12);
 		startAngle += dataset[s].radian;
 		starty+=20;
 	}    

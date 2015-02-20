@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Chart Application</title>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="JS/script.js"></script>
     <script type="text/javascript" src="js/barchart.js"></script>
     <script type="text/javascript" src="js/piechart.js"></script>
     <script type="text/javascript" src="js/linechart.js"></script>
@@ -15,12 +15,15 @@
         }
         p{
           padding: 0;
-          margin: 40px 0 20px 0;
-          font-size: 20px
+          margin: 20px 0 20px 0;
+          font-size: 15px
         }
         h1{
           padding: 10px;
           color: white;
+        }
+        h3{
+          padding-top: 20px;
         }
         header{          
           margin-top: 0;
@@ -28,15 +31,18 @@
           background-color: #0D47A1;          
           box-shadow: 0px 5px 5px #777777;;
         }
+        canvas{
+          width: 100%;
+        }
         .container{
           width: 65%;
           margin: 0 auto;
         }
         .canvas{
-          width: 65%;
-          box-shadow: 0px 0px 5px black;
+          width: 60%;
+          box-shadow: 2px 2px 5px #777777;
           position: relative;
-          margin: 40px 20px;
+          margin: 40px 10px;
           background-color: white;
           float: right;
          }
@@ -45,31 +51,41 @@
           text-align: center;
           background-color: white;
           position: relative;
-          box-shadow: 0px 0px 5px black;
+          box-shadow: 2px 2px 5px #777777;
           margin: 40px 20px;
           padding: 20px;
           float: left;
         }
         input{
-          margin: 5px 25px 0 0;
-          width: 70px;            
+          margin: 10px 25px 0 0;
+          width: 20%;
+          padding: 5px;            
         }
-        input[type="radio"]{
-          margin: 0 0 0 10px;
+        select{
+          padding: 5px;          
         }
+        option{
+          padding: 2px;          
+          font-size: 10px;
+        }
+        
         input[type="reset"]{
           padding: 10px;
           background-color: #F44336;
           color: white;
+          width: 70px;
         }
         input[value="PLOT"]{
           padding: 10px;
           background-color: #4CAF50;
           color: white;
+          width: 70px;
         }
         input[id = "title"]{           
-          padding: 2px;
-          width: 200px
+          padding: 5px;
+          width: 70%;
+          margin: 0 auto;
+          font-size: 15px;          
         }
         input[name = "chart"]{    
           width: 20px;
@@ -79,23 +95,24 @@
 
   <body>
     <header>
-      <h1> Chart Plotter</h1>
+      <h1>Chart Plotter</h1>
     </header>
     
     <div class="container">
       <div class="data">
-        <p> Select Chart </p>
+        <h3> Select Chart </h3>
         <select  id="charts">
           <option value="barchart">Bar Chart</option>
           <option value="piechart">Pie Chart</option>
           <option value="linechart">Line Chart</option>
           <option value="histogram">Histogram</option>           
         </select>
-        <p>Graph Title<br><input type="text" id="title"></p>                
+        <h3>Enter Chart Title</h3>
+        <input type="text" id="title">                
         
-        <p>Data Set:</p>
+        <h3>Enter Data Set</h3>
         
-        No of Items: 
+        <p>No of Items: 
         <select onChange="itemlist()" id="items">
           <option value="0">0</option>
           <option value="1">1</option>
@@ -109,7 +126,7 @@
           <option value="9">9</option>
           <option value="10">10</option>
         </select>         
-        
+        </p>
         <div id="list"> </div><br>
         <input type="reset" onclick="reset()" value="RESET">
         <input type="button" onclick="plotGraph()" value="PLOT">
@@ -120,7 +137,6 @@
           This version of your browser is not supported.
         </canvas>
       </div>
-    </div>
-    
+    </div>    
   </body>
 </html>

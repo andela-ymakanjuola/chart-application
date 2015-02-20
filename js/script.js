@@ -56,7 +56,7 @@ function itemlist() {
     var option = no.options[no.selectedIndex].value;
     var list = document.getElementById("list");            
     list.innerHTML='';              
-    list.appendChild(document.createTextNode("Item Name:  Item Value:"));
+    list.appendChild(document.createTextNode("Item Name:\tItem Value:"));
     //list.appendChild(document.createTextNode("Item Value:"));
 	for (var i=0; i<option; i++){
 	    var input_label = document.createElement("INPUT");
@@ -87,11 +87,12 @@ function plotaxis(){
 	context.clearRect(0, 0, canvas.width, canvas.height);              	
     context.font = '20pt Helvetica';
     context.fillStyle = 'black';
-    context.fillText(title, canvas.width/2-100, 50);
+    context.textAlign = "center";
+    context.fillText(title, canvas.width/2, 50);
 	context.beginPath();
 	context.moveTo(startx, 100);
-	context.lineTo(startx, 600);
-	context.lineTo(600, 600);
+	context.lineTo(startx, canvas.height-100);
+	context.lineTo(canvas.width-100, canvas.height-100);
 	context.lineWidth = 2;
 	context.strokeStyle = '#777777';
 	context.stroke();
