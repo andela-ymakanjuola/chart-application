@@ -56,7 +56,7 @@ function itemlist() {
     var option = no.options[no.selectedIndex].value;
     var list = document.getElementById("list");            
     list.innerHTML='';              
-    list.appendChild(document.createTextNode("Item Name:\tItem Value:"));
+    list.appendChild(document.createTextNode("Item Name: Item Value:"));
     //list.appendChild(document.createTextNode("Item Value:"));
 	for (var i=0; i<option; i++){
 	    var input_label = document.createElement("INPUT");
@@ -65,8 +65,9 @@ function itemlist() {
 	    input_label.setAttribute("class", "name");
 	    input_value.setAttribute("type", "number");
 	    input_value.setAttribute("class", "values");
+        input_value.setAttribute("value", 0);
 	    list.appendChild(document.createElement("BR"));
-	    list.appendChild(document.createTextNode(i+1+'. \t'));
+	    list.appendChild(document.createTextNode(i+1+'. '));
 	    list.appendChild(input_label);
 	    list.appendChild(input_value);            
 	}           		
