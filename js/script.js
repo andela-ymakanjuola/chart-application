@@ -21,13 +21,10 @@ function plotGraph(){
 		
 	//calculate value percentage and add to dataset
 	for(var j=0;j<dataset.length;j++){
-        dataset[j].percent = (dataset[j].value/sum)*100;
-        
+        dataset[j].percent = (dataset[j].value/sum)*100;        
         scale.push(dataset[j].percent);
-    }
-    console.log(scale);
-    var max = findMax(scale);//max user linput value
-    console.log(max);
+    }    
+    var max = findMax(scale);//max user linput value    
             
     if(option==='barchart'){
     	barchart(dataset, max);
