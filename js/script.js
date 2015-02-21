@@ -82,11 +82,14 @@ function plotaxis(){
 	var context = canvas.getContext('2d');
 	var startx = 50;
     var title = document.getElementById('title').value;
-	context.clearRect(0, 0, canvas.width, canvas.height);              	
+	context.clearRect(0, 0, canvas.width, canvas.height); 
+    
+    //write chart title and center on canvas            	
     context.font = '20pt Helvetica';
     context.fillStyle = 'black';
     context.textAlign = "center";
-    context.fillText(title, canvas.width/2, 50);
+    context.fillText(title, canvas.width/2, 50); 
+
 	context.beginPath();
 	context.moveTo(startx, 100);
 	context.lineTo(startx, canvas.height-100);

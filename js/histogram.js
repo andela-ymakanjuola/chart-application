@@ -16,7 +16,8 @@ function histogram(dataset, max) {
 		context.fill();
 		context.font = '10pt Helvetica';
 		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, startx, 620);
+		context.textAlign = "center";
+    	context.fillText(dataset[s].name, startx+25, 620);
 		startx += 50;
 	}			        
 }

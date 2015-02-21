@@ -30,10 +30,11 @@ function piechart(dataset,max) {
 		context.rect(canvas.width-100,starty, 15,15);
 		context.fillStyle = chartcolors[s];
 		context.fill();
-
 		context.font = '10pt Helvetica';
 		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, canvas.width-70, starty+12);
+		context.textAlign = "left";
+    	context.fillText(dataset[s].name, canvas.width-80, starty+12);
+
 		startAngle += dataset[s].radian;
 		starty+=20;
 	}    
