@@ -12,7 +12,7 @@ function plotGraph(){
     for(var i=0;i<node_name.length;i++){
     	var data ={};
         data.name = node_name[i].value;
-        data.value = parseInt(node_value[i].value);
+        data.value = parseFloat(node_value[i].value);
 
         sum += data.value; //get sum of data values
         dataset.push(data); 
@@ -21,7 +21,7 @@ function plotGraph(){
 		
 	//calculate value percentage and add to dataset
 	for(var j=0;j<dataset.length;j++){
-        dataset[j].percent = Math.round((dataset[j].value/sum)*100);
+        dataset[j].percent = (dataset[j].value/sum)*100;
         
         scale.push(dataset[j].percent);
     }
