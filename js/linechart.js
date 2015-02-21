@@ -4,7 +4,7 @@ function linechart(dataset, max) {
 	var context = canvas.getContext('2d');
 	var startx = 50;
 
-	var scale_f = (canvas.height-200)/max;							
+	var scale_f = (canvas.height-200)/max; //scale factor calculation							
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	plotaxis();
 	context.beginPath();
@@ -12,7 +12,7 @@ function linechart(dataset, max) {
 	//convert percentage in radians and plot graph			       
 	for(var s in dataset){	
 		//create line   
-		context.lineTo(startx, (600-dataset[s].percent*scale_f));//y=axis numbers multiplied by 5 to improve scaling
+		context.lineTo(startx, (600-dataset[s].percent*scale_f));//y-axis numbers multiplied by scale to improve scaling
 		context.lineWidth = 2;
 		context.strokeStyle = '#F44336';
 		context.stroke();

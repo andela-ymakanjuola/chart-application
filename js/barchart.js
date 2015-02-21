@@ -3,7 +3,7 @@ function barchart(dataset, max) {
 	var canvas = document.getElementById('chart');
 	var context = canvas.getContext('2d');
 	var startx = 80;  
-	var scale_f = (canvas.height-200)/max;				        
+	var scale_f = (canvas.height-200)/max;		//scale factor calculation		        
 	context.clearRect(0, 0, canvas.width, canvas.height);
     plotaxis();
                 
@@ -14,7 +14,7 @@ function barchart(dataset, max) {
 		context.fill();
 		context.font = '10pt Helvetica';
 		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, startx, 620);
+    	context.fillText(dataset[s].name, startx+15, 620);
 		startx += 50;
 	}			        
 }
