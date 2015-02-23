@@ -1,20 +1,20 @@
 //function to plot bar chat			  
-function barchart(dataset, max) {
+function barChart(dataset, max) {
 	var canvas = document.getElementById('chart');
 	var context = canvas.getContext('2d');
-	var startx = 80;  
+	var startx = 65;  
 	var scale_f = (canvas.height-200)/max;		//scale factor calculation		        
 	context.clearRect(0, 0, canvas.width, canvas.height);
-    plotaxis();
+    plotAxis();
                 
 	for(var s in dataset){			    
 		context.beginPath();
-        context.rect(startx,600, 30,-dataset[s].percent*scale_f); //multiply by 10 to improve scaling
+        context.rect(startx,canvas.height-100, 50,-dataset[s].percent*scale_f); //multiply by 10 to improve scaling
 		context.fillStyle = '#B71C1C';
 		context.fill();
-		context.font = '10pt Helvetica';
+		context.font = '12pt Helvetica';
 		context.fillStyle = 'black';
-    	context.fillText(dataset[s].name, startx+15, 620);
-		startx += 50;
+    	context.fillText(dataset[s].names, startx+25, canvas.height-80);
+		startx += 65;
 	}			        
 }

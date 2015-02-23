@@ -1,39 +1,39 @@
 //funtion to get data from inputs and plot chart based on selection
 function plotGraph(){
 	var list = document.getElementById("list");  // get div element with id list
-    var node_name = list.getElementsByClassName('name'); //get all the input text with class: name 
-    var node_value = list.getElementsByClassName('values'); //get all the input text with class: value
+    var node_names = list.getElementsByClassName('names'); //get all the input text with class: name 
+    var node_values = list.getElementsByClassName('values'); //get all the input text with class: value
     var dataset = [], scale=[];            
     var sum = 0;
     var title = document.getElementById("title").value; //get graph title text           
     var option = charttype();
             
     //push all user data to be plotted into array
-    for(var i=0;i<node_name.length;i++){
+    for(var i=0;i<node_names.length;i++){
     	var data ={};
-        data.name = node_name[i].value;
-        data.value = parseFloat(node_value[i].value);
+        data.names = node_names[i].value;
+        data.values = parseFloat(node_values[i].value);
 
-        sum += data.value; //get sum of data values
+        sum += data.values; //get sum of data values
         dataset.push(data); 
         ;           
     }                      			    
 		
 	//calculate value percentage and add to dataset
 	for(var j=0;j<dataset.length;j++){
-        dataset[j].percent = (dataset[j].value/sum)*100;        
+        dataset[j].percent = (dataset[j].values/sum)*100;        
         scale.push(dataset[j].percent);
     }    
     var max = findMax(scale);//max user linput value    
             
     if(option==='barchart'){
-    	barchart(dataset, max);
+    	barChart(dataset, max);
     }
     else if(option==='piechart'){
-        piechart(dataset, max);
+        pieChart(dataset, max);
     }
     else if(option==='linechart'){
-        linechart(dataset, max);
+        lineChart(dataset, max);
     }
     else if(option==='histogram'){
         histogram(dataset, max);
@@ -48,7 +48,7 @@ function charttype(){
 }
       		
 //function to create item input list base of number of items
-function itemlist() {
+function itemList() {
     var no = document.getElementById("items");
     var option = no.options[no.selectedIndex].value;
     var list = document.getElementById("list");            
@@ -59,7 +59,7 @@ function itemlist() {
 	    var input_label = document.createElement("INPUT");
 	    var input_value = document.createElement("INPUT");            
 	    input_label.setAttribute("type", "text");
-	    input_label.setAttribute("class", "name");
+	    input_label.setAttribute("class", "names");
 	    input_value.setAttribute("type", "number");
 	    input_value.setAttribute("class", "values");
         input_value.setAttribute("value", 0);
@@ -69,7 +69,10 @@ function itemlist() {
 	    list.appendChild(input_value);            
 	}           		
 }
-
+function resetItemList(){
+    var list = document.getElementById("list");            
+    list.innerHTML=''; 
+}
 //function to find maximum percentage value       
 function findMax(A){
 	A.sort(function(a, b){return a-b});
@@ -77,7 +80,7 @@ function findMax(A){
 }
 	    			    		
 //Function to plot axis with labels from data set
-function plotaxis(){
+function plotAxis(){
 	var canvas = document.getElementById('chart');
 	var context = canvas.getContext('2d');
 	var startx = 50;

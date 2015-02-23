@@ -7,17 +7,17 @@ function histogram(dataset, max) {
 						'#558B2F', '#F9A825', '#EF6C00', '#4E342E', '#37474F']; 
 	var scale_f = (canvas.height-200)/max; //calculate scale factor based on maximum user input				        
 	context.clearRect(0, 0, canvas.width, canvas.height);
-    plotaxis();
+    plotAxis();
                 
 	for(var s in dataset){			    
 		context.beginPath();
-        context.rect(startx,600, 50,-dataset[s].percent*scale_f); //multiply by scale factor
+        context.rect(startx,canvas.height-100, 60,-dataset[s].percent*scale_f); //multiply by scale factor
 		context.fillStyle = chartcolors[s];
 		context.fill();
-		context.font = '10pt Helvetica';
+		context.font = '12pt Helvetica';
 		context.fillStyle = 'black';
 		context.textAlign = "center";
-    	context.fillText(dataset[s].name, startx+25, 620);
-		startx += 50;
+    	context.fillText(dataset[s].names, startx+25, canvas.height-80);
+		startx += 60;
 	}			        
 }

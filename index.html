@@ -100,40 +100,41 @@
     
     <div class="container">
       <div class="data">
-        <h3> Select Chart </h3>
-        <select  id="charts">
-          <option value="barchart">Bar Chart</option>
-          <option value="piechart">Pie Chart</option>
-          <option value="linechart">Line Chart</option>
-          <option value="histogram">Histogram</option>           
-        </select>
-        <h3>Enter Chart Title</h3>
-        <input type="text" id="title">                
-        
-        <h3>Enter Data Set</h3>
-        
-        <p>No of Items: 
-        <select onChange="itemlist()" id="items">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>         
-        </p>
-        <div id="list"> </div><br>
-        <input type="reset" id="clear" value="RESET">
-        <input type="button" onclick="plotGraph()" value="PLOT">
-        
+        <form>        
+          <h3> Select Chart </h3>
+          <select  id="charts">
+            <option value="barchart">Bar Chart</option>
+            <option value="piechart">Pie Chart</option>
+            <option value="linechart">Line Chart</option>
+            <option value="histogram">Histogram</option>           
+          </select>
+          <h3>Enter Chart Title</h3>
+          <input type="text" id="title">                
+          
+          <h3>Enter Data Set</h3>
+          
+          <p>No of Items: 
+          <select onChange="itemList()" id="items">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>         
+          </p>
+          <div id="list"> </div><br>
+          <input type="reset" onclick="resetItemList()" value="RESET">
+          <input type="button" onclick="plotGraph()" value="PLOT">
+        </form>
       </div>
       <div class ="canvas">
-        <canvas id="chart" width="700" height="700">
+        <canvas id="chart" width="1000" height="1000">
           This version of your browser is not supported.
         </canvas>
       </div>
