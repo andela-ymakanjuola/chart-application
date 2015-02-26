@@ -6,7 +6,7 @@ function plotGraph(){
     var dataset = [], scale=[];            
     var sum = 0;
     var title = document.getElementById("title").value; //get graph title text           
-    var option = charttype();
+    var option = chartType();
             
     //push all user data to be plotted into array
     for(var i=0;i<node_names.length;i++){
@@ -24,7 +24,7 @@ function plotGraph(){
         dataset[j].percent = (dataset[j].values/sum)*100;        
         scale.push(dataset[j].percent);
     }    
-    var max = findMax(scale);//max user linput value    
+    var max = findMax(scale);//get max percentage user input values    
             
     if(option==='barchart'){
     	barChart(dataset, max);
@@ -41,7 +41,7 @@ function plotGraph(){
 }
  
 //function to get typeof chart selected            
-function charttype(){
+function chartType(){
 	var chart = document.getElementById("charts"); 
     var option = chart.options[chart.selectedIndex].value; //get chart type selected
     return option;
@@ -49,12 +49,12 @@ function charttype(){
       		
 //function to create item input list base of number of items
 function itemList() {
-    var no = document.getElementById("items");
-    var option = no.options[no.selectedIndex].value;
+    var items = document.getElementById("items");
+    var option = items.options[items.selectedIndex].value;
     var list = document.getElementById("list");            
     list.innerHTML='';              
     list.appendChild(document.createTextNode("Item Name: Item Value:"));
-    //list.appendChild(document.createTextNode("Item Value:"));
+    //loop to create input elemts based on option selected
 	for (var i=0; i<option; i++){
 	    var input_label = document.createElement("INPUT");
 	    var input_value = document.createElement("INPUT");            
@@ -69,10 +69,13 @@ function itemList() {
 	    list.appendChild(input_value);            
 	}           		
 }
+
+//function to clear created input elements on reset click
 function resetItemList(){
     var list = document.getElementById("list");            
     list.innerHTML=''; 
 }
+
 //function to find maximum percentage value       
 function findMax(A){
 	A.sort(function(a, b){return a-b});
@@ -83,7 +86,7 @@ function findMax(A){
 function plotAxis(){
 	var canvas = document.getElementById('chart');
 	var context = canvas.getContext('2d');
-	var startx = 50;
+	var startx = 70;
     var title = document.getElementById('title').value;
 	context.clearRect(0, 0, canvas.width, canvas.height); 
     

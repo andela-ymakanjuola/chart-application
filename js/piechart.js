@@ -2,7 +2,7 @@
 function pieChart(dataset,max) {
 	var canvas = document.getElementById('chart');
 	var context = canvas.getContext('2d');
-	var chartcolors = ['#C62828','#6A1B9A', '#283593', '#0277BD', '#00695C', 
+	var chart_colors = ['#C62828','#6A1B9A', '#283593', '#0277BD', '#00695C', 
 						'#558B2F', '#F9A825', '#EF6C00', '#4E342E', '#37474F'];  
 	var x = (canvas.width/2);
 	var y = (canvas.height/2);
@@ -17,14 +17,12 @@ function pieChart(dataset,max) {
     context.font = '20pt Helvetica';
     context.fillStyle = 'black';
     context.textAlign = "center";
-    context.fillText(title, canvas.width/2, 50); 
-              
+    context.fillText(title, canvas.width/2, 50);             
     
-
-	//convert percentage in radians and plot graph				
+	//convert percentage values to radians and plot chart				
 	for(var s in dataset){
 		dataset[s].radian = (dataset[s].percent/100)*Math.PI*2;
-		context.fillStyle = chartcolors[s];
+		context.fillStyle = chart_colors[s];
 		context.beginPath();
 		context.arc(x, y, radius, start_angle,start_angle+dataset[s].radian, false);
 		context.lineTo(x,y);
@@ -32,7 +30,7 @@ function pieChart(dataset,max) {
 
 		//create Legend
 		context.rect(canvas.width-120,starty, 20,20);
-		context.fillStyle = chartcolors[s];
+		context.fillStyle = chart_colors[s];
 		context.fill();
 		context.font = '12pt Helvetica';
 		context.fillStyle = 'black';
